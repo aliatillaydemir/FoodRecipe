@@ -1,4 +1,4 @@
-package com.ayd.recipeapp
+package com.ayd.recipeapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.ayd.recipeapp.R
 import com.ayd.recipeapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +24,11 @@ class MainActivity : AppCompatActivity() {
 
 
         navController = findNavController(R.id.navHostFragment)
-        val appBarConfig:AppBarConfiguration = AppBarConfiguration(setOf(R.id.recipesFragment, R.id.favoriteRecipesFragment, R.id.foodJokeFragment))
+        val appBarConfig:AppBarConfiguration = AppBarConfiguration(setOf(
+            R.id.recipesFragment,
+            R.id.favoriteRecipesFragment,
+            R.id.foodJokeFragment
+        ))
 
         binding.bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController,appBarConfig)
