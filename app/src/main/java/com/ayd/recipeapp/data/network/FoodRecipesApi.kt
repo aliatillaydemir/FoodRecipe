@@ -1,4 +1,4 @@
-package com.ayd.recipeapp
+package com.ayd.recipeapp.data.network
 
 import com.ayd.recipeapp.model.FoodRecipe
 import retrofit2.Response

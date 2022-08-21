@@ -1,4 +1,4 @@
-package com.ayd.recipeapp
+package com.ayd.recipeapp.util
 
 class Constants {
 
