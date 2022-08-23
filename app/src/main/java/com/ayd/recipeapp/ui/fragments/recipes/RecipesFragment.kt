@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ayd.recipeapp.MainViewModel
-import com.ayd.recipeapp.R
+import com.ayd.recipeapp.viewModels.MainViewModel
 import com.ayd.recipeapp.adapter.RecipesAdapter
 import com.ayd.recipeapp.databinding.FragmentRecipesBinding
 import com.ayd.recipeapp.util.Constants.Companion.API_KEY
 import com.ayd.recipeapp.util.NetworkResult
+import com.ayd.recipeapp.viewModels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -23,10 +22,23 @@ class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var recipesViewModel: RecipesViewModel
     private lateinit var mainViewModel: MainViewModel
     private val mAdapter by lazy { RecipesAdapter() }
     //private lateinit var mView: View
 
+
+    //OnCreate'i kendimiz ekledik, OnCreateView'dan önce çağrılır bu. ViewModellarımızı init etmek için yaptık bunu.
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        recipesViewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
+
+
+    }
+
+    //fragment oluşturulduğunda otomatik olarak OnCreate değil OnCreateView oluşturulur.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,8 +48,6 @@ class RecipesFragment : Fragment() {
 
         _binding = FragmentRecipesBinding.inflate(inflater,container,false)
 
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-
         setUpRecyclerView()
         requestApiData()
 
@@ -46,7 +56,7 @@ class RecipesFragment : Fragment() {
 
     private fun requestApiData(){
 
-        mainViewModel.getRecipes(applyQueries())
+        mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -69,18 +79,7 @@ class RecipesFragment : Fragment() {
 
     }
 
-    private fun applyQueries(): HashMap<String,String>{
 
-        val queries: HashMap<String,String> = HashMap()
-        queries["number"] = "50"
-        queries["apiKey"] = API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
-
-        return queries
-    }
 
     private fun setUpRecyclerView(){
 
