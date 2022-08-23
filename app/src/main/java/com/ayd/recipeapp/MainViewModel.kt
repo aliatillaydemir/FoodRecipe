@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val repo: Repo, application: MyApp
+class MainViewModel @Inject constructor(private val repo: Repo, application: Application
 ): AndroidViewModel(application) {
 
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
