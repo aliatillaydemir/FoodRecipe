@@ -15,6 +15,7 @@ import com.ayd.recipeapp.adapter.RecipesAdapter
 import com.ayd.recipeapp.databinding.FragmentRecipesBinding
 import com.ayd.recipeapp.util.Constants.Companion.API_KEY
 import com.ayd.recipeapp.util.NetworkResult
+import com.ayd.recipeapp.util.observeOnce
 import com.ayd.recipeapp.viewModels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -28,7 +29,6 @@ class RecipesFragment : Fragment() {
     private lateinit var recipesViewModel: RecipesViewModel
     private lateinit var mainViewModel: MainViewModel
     private val mAdapter by lazy { RecipesAdapter() }
-    //private lateinit var mView: View
 
 
     //OnCreate'i kendimiz ekledik, OnCreateView'dan önce çağrılır bu. ViewModellarımızı init etmek için yaptık bunu.
@@ -47,6 +47,8 @@ class RecipesFragment : Fragment() {
     ): View {
 
         _binding = FragmentRecipesBinding.inflate(inflater,container,false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
 
         setUpRecyclerView()
         readDatabase()
@@ -65,7 +67,7 @@ class RecipesFragment : Fragment() {
 
         lifecycleScope.launch{
 
-            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     Log.d("RecipesFragment","readDatabase called!!")
                     mAdapter.setData(database[0].foodRecipe)
@@ -129,5 +131,9 @@ class RecipesFragment : Fragment() {
         binding.recyclerview.visibility = View.VISIBLE
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null  //avoid memory leaks
+    }
 
 }
