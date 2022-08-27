@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    // Custom Chip Style
+        <color name = "checkedChipBackgroundColor">#346200EE</color>
+        <color name = "chipBackgroundColor">#EFE9E9</color>
+        <color name = "checkedChipTextColor">#FF6200EE</color>
+        <color name = "chipTextColor">#434243</color>
 </resources>
