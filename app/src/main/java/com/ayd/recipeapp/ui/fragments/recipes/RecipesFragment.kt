@@ -17,6 +17,7 @@ import com.ayd.recipeapp.viewModels.MainViewModel
 import com.ayd.recipeapp.adapter.RecipesAdapter
 import com.ayd.recipeapp.databinding.FragmentRecipesBinding
 import com.ayd.recipeapp.util.Constants.Companion.API_KEY
+import com.ayd.recipeapp.util.NetworkListener
 import com.ayd.recipeapp.util.NetworkResult
 import com.ayd.recipeapp.util.observeOnce
 import com.ayd.recipeapp.viewModels.RecipesViewModel
@@ -34,6 +35,8 @@ class RecipesFragment : Fragment() {
     private lateinit var recipesViewModel: RecipesViewModel
     private lateinit var mainViewModel: MainViewModel
     private val mAdapter by lazy { RecipesAdapter() }
+
+    private lateinit var networkListener: NetworkListener
 
 
     //OnCreate'i kendimiz ekledik, OnCreateView'dan önce çağrılır bu. ViewModellarımızı init etmek için yaptık bunu.
@@ -56,10 +59,29 @@ class RecipesFragment : Fragment() {
         binding.mainViewModel = mainViewModel
 
         setUpRecyclerView()
-        readDatabase()
+
+        recipesViewModel.readBackOnline.observe(viewLifecycleOwner){
+            recipesViewModel.backOnline = it
+        }
+
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect{status ->
+                    Log.d("NetworkListener",status.toString())
+                    recipesViewModel.networkStatus = status
+                    recipesViewModel.showNetworkStatus()
+                    readDatabase()
+                }
+        }
+
 
         binding.recipesFab.setOnClickListener{
-            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            if(recipesViewModel.networkStatus){
+                findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            }else{
+                recipesViewModel.showNetworkStatus()
+            }
         }
 
         return binding.root
