@@ -22,7 +22,7 @@ class MainViewModel @Inject constructor(private val repo: Repo, application: App
 ): AndroidViewModel(application) {
 
 
-    //room database
+    /** room database */
 
     val readRecipes: LiveData<List<RecipesEntity>> = repo.local.readDatabase().asLiveData() // asLiveData flow'u livedata'ya çevirir. repo local'de flow tutmuştuk, livedataya çevirdik.
 
@@ -31,13 +31,19 @@ class MainViewModel @Inject constructor(private val repo: Repo, application: App
             repo.local.insertRecipes(recipesEntity)
         }
 
-    //retrofit
+    /** retrofit*/
 
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
+    var searchedRecipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
 
     fun getRecipes(queries: Map<String,String>) = viewModelScope.launch {
         getRecipesSafeCall(queries)
     }
+
+    fun searchRecipes(searchQuery: Map<String,String>) = viewModelScope.launch{
+        searchRecipesSafeCall(searchQuery)
+    }
+
 
     private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
 
@@ -60,6 +66,26 @@ class MainViewModel @Inject constructor(private val repo: Repo, application: App
         }else{
             recipesResponse.value = NetworkResult.Error("connection error")
         }
+
+    }
+
+    private suspend fun searchRecipesSafeCall(searchQuery: Map<String, String>) {
+
+        searchedRecipesResponse.value = NetworkResult.Loading()
+
+        if(hasInternetConnection()){
+            try{
+                val response = repo.remote.searchRecipes(searchQuery)
+                searchedRecipesResponse.value = handleFoodRecipesResponse(response)
+
+            }catch (e:Exception){
+                searchedRecipesResponse.value = NetworkResult.Error("Recipes not found")
+            }
+
+        }else{
+            searchedRecipesResponse.value = NetworkResult.Error("connection error")
+        }
+
 
     }
 
