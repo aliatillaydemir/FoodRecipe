@@ -14,4 +14,7 @@
         <color name = "chipBackgroundColor">#EFE9E9</color>
         <color name = "checkedChipTextColor">#FF6200EE</color>
         <color name = "chipTextColor">#434243</color>
+
+    <color name="actionBarBackgroundColor">#FF6200EE</color>
+
 </resources>

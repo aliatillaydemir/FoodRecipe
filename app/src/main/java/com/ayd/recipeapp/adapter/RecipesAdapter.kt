@@ -54,7 +54,7 @@ class RecipesAdapter:RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
         recipes = newData.results
         //notifyDataSetChanged() -> bunun yerine daha performanslı olan diffUtil classını yarattık, onu kullanacağız.
 
-        diffUtilResult.dispatchUpdatesTo(this)
+        diffUtilResult.dispatchUpdatesTo(this) // bütün listeleri değil, listedeki değişen elemanları fark eder.
     }
 
 

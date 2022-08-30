@@ -14,11 +14,32 @@
         <!-- Customize your theme here. -->
     </style>
 
+
     // Custom Chip Style
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
         <item name = "chipBackgroundColor">@color/chip_background_color</item>
         <item name = "android:textColor">@color/chip_text_color</item>
         <item name = "checkedIconTint">@color/chip_text_color</item>
+    </style>
+
+
+    <style name="DetailsActivityStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">#4C04EF</item>
+        <item name="colorAccent">#9676DD</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:statusBarColor">#4710C3</item>
+    </style>
+
+    <style name="CustomTableLayoutStyle" parent="Widget.Design.TabLayout">
+        <item name="background">@color/actionBarBackgroundColor</item>
+        <item name="tabIndicatorColor">#FFFFFF</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabSelectedTextColor">#FFFFFF</item>
+    </style>
+    
+    <style name="CustomTabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
 
