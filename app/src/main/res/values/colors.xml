@@ -16,5 +16,8 @@
         <color name = "chipTextColor">#434243</color>
 
     <color name="actionBarBackgroundColor">#FF6200EE</color>
+    <color name="strokeColor">#878484</color>
+    <color name="cardBackgroundColor">@color/white</color>
+    <color name="titleColor">#222121</color>
 
 </resources>

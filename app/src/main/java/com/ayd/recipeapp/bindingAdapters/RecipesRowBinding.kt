@@ -12,6 +12,7 @@ import coil.load
 import com.ayd.recipeapp.R
 import com.ayd.recipeapp.model.Result
 import com.ayd.recipeapp.ui.fragments.recipes.RecipesFragmentDirections
+import org.jsoup.Jsoup
 import java.lang.Exception
 
 class RecipesRowBinding {
@@ -33,7 +34,7 @@ class RecipesRowBinding {
 
         @BindingAdapter("loadImageFromUrl")
         @JvmStatic
-        fun loadImageFromUrl(imageView: ImageView, imageUrl: String){
+        fun loadImageFromUrl(imageView: ImageView, imageUrl: String?){
             imageView.load(imageUrl){
                 crossfade(600)
                 error(R.drawable.ic_error)
@@ -42,13 +43,13 @@ class RecipesRowBinding {
 
         @BindingAdapter("setNumberOfLikes")
         @JvmStatic
-        fun setNumberOfLikes(textView:TextView, likes: Int){
+        fun setNumberOfLikes(textView:TextView, likes: Int?){
             textView.text = likes.toString()
         }
 
         @BindingAdapter("setNumberOfMinutes")
         @JvmStatic
-        fun setNumberOfMinutes(textView: TextView, minutes: Int){
+        fun setNumberOfMinutes(textView: TextView, minutes: Int?){
             textView.text = minutes.toString()
         }
 
@@ -70,6 +71,15 @@ class RecipesRowBinding {
             } //if vegan
 
         } //end of func.
+
+        @BindingAdapter("parseHtml")
+        @JvmStatic
+        fun parseHtml(textView: TextView, description: String?){
+            if(description != null){
+                val desc = Jsoup.parse(description).text() // parse to html text -> </br> etc.
+                textView.text = desc
+            }
+        }
 
 
     }

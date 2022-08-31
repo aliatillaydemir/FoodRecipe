@@ -12,6 +12,7 @@ import com.ayd.recipeapp.databinding.ActivityDetailsBinding
 import com.ayd.recipeapp.ui.fragments.ingredients.IngredientsFragment
 import com.ayd.recipeapp.ui.fragments.instructions.InstructionsFragment
 import com.ayd.recipeapp.ui.fragments.overview.OverviewFragment
+import com.ayd.recipeapp.util.Constants.Companion.RECIPE_RESULT_KEY
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailsActivity : AppCompatActivity() {
@@ -40,7 +41,7 @@ class DetailsActivity : AppCompatActivity() {
         titles.add("Instructions")
 
         val resultBundle = Bundle()
-        resultBundle.putParcelable("recipeBundle",args.result)
+        resultBundle.putParcelable(RECIPE_RESULT_KEY,args.result)
 
         val adapter = PagerAdapter(resultBundle,fragments,this)
 

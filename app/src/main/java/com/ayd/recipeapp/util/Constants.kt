@@ -4,7 +4,12 @@ class Constants {
 
     companion object{
         const val API_KEY = "bf6b765079a44d519c90e3331372715e"
+        const val BASE_IMAGE_URL = "https://spoonacular.com/cdn/ingredients_100x100/"
         const val BASE_URL = "https://api.spoonacular.com"
+
+        const val RECIPE_RESULT_KEY  =  "recipeBundle" //Parcelable args'ları get,put yapmak için kullandığımız ortak key. retrofitle çektiğimiz verileri
+        //bu keyi belirterek dağıtabileceğiz. fakat veri listesi ve "listenin üstündeki + veriyi alan "sınıfın" parcelable olması gerekiyor.
+        //böylelikle retrofitle verileri bir kez çekiyoruz ve dağıtıyoruz ihtiyaca göre
 
         const val QUERY_SEARCH = "query"
         const val QUERY_NUMBER = "number"

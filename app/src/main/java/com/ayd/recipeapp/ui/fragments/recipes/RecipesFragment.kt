@@ -17,6 +17,7 @@ import com.ayd.recipeapp.R
 import com.ayd.recipeapp.viewModels.MainViewModel
 import com.ayd.recipeapp.adapter.RecipesAdapter
 import com.ayd.recipeapp.databinding.FragmentRecipesBinding
+import com.ayd.recipeapp.ui.DetailsActivityArgs
 import com.ayd.recipeapp.util.NetworkListener
 import com.ayd.recipeapp.util.NetworkResult
 import com.ayd.recipeapp.util.observeOnce

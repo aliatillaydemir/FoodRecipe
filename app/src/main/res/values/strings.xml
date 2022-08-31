@@ -32,5 +32,11 @@
     <string name="whole30">whole30</string>
     <string name="apply">Apply</string>
     <string name="search">search</string>
+    <string name="cheap">Cheap</string>
+    <string name="healthy">Healthy</string>
+    <string name="dairy_free">Dairy Free</string>
+    <string name="Gluten_free">Gluten Free</string>
+    <string name="Vegan">Vegan</string>
+    <string name="Vegetarian">Vegetarian</string>
 
 </resources>
