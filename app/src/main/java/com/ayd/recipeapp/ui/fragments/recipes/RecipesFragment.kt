@@ -60,8 +60,9 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.mainViewModel = mainViewModel
 
 
-//setHasOptionsMenu(true)
+setHasOptionsMenu(true)
 
+        /*
 //setHasOptionsMenu deprecate olduğu için yerine bu kod bloğunu yazıyorum.
         val menuHost: MenuHost = requireActivity()
 
@@ -83,7 +84,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         })
 //setHasOptionsMenu yerine
 
-
+*/
 
         setUpRecyclerView()
 
@@ -114,6 +115,14 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.recipes_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
 

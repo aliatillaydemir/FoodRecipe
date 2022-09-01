@@ -38,5 +38,6 @@
     <string name="Gluten_free">Gluten Free</string>
     <string name="Vegan">Vegan</string>
     <string name="Vegetarian">Vegetarian</string>
+    <string name="save_to_favorites">Save to Favorites</string>
 
 </resources>
