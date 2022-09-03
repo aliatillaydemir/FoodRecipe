@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_RecipeApp) //splash screen sonrasında onCreate yaratılır yaratılmaz ana temaya dön. yoksa nasıl açılacak?
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
