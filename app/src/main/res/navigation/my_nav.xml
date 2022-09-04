@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodJokeFragment"
-        android:name="com.ayd.recipeapp.ui.fragments.foodjokes.foodJokeFragment"
+        android:name="com.ayd.recipeapp.ui.fragments.foodjokes.FoodJokeFragment"
         android:label="Food Joke"
         tools:layout="@layout/fragment_food_joke" />
     <dialog
