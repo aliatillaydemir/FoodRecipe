@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="DetailsActivityStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">#4C04EF</item>
+        <item name="colorAccent">#9676DD</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:statusBarColor">#1B1A1A</item>
+    </style>
+
 </resources>

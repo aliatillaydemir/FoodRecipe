@@ -2,30 +2,29 @@
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="purple_700">#1D1C1E</color>
+    <color name="teal_200">#4B1C8F</color>
+    <color name="teal_700">#8330DD</color>
+    <color name="black">#F8F7F7</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#EDCB11</color>
 
-
-    <color name="rowTextColor">#3E3D3D</color>
+    <color name="rowTextColor">@color/black</color>
 
     // Custom Chip Style
-        <color name = "checkedChipBackgroundColor">#346200EE</color>
-        <color name = "chipBackgroundColor">#EFE9E9</color>
-        <color name = "checkedChipTextColor">#FF6200EE</color>
-        <color name = "chipTextColor">#434243</color>
+    <color name = "checkedChipBackgroundColor">#348D7CA5</color>
+    <color name = "chipBackgroundColor">#EFE9E9</color>
+    <color name = "checkedChipTextColor">#C2A8E6</color>
+    <color name = "chipTextColor">#434243</color>
 
-    //cardView
+    //cardview
     <color name="actionBarBackgroundColor">#FF6200EE</color>
     <color name="strokeColor">#878484</color>
-    <color name="cardBackgroundColor">@color/white</color>
+    <color name="cardBackgroundColor">#5A5757</color>
     <color name="titleColor">#222121</color>
     <color name="cardBackgroundLightColor">#196200EE</color>
 
-    <color name="statusBarColor">#4E17CA</color>
+    <color name="statusBarColor">#000000</color>
     <color name="contextualStatusBarColor">#272626</color>
     <color name="contextualActionBarColor">#434343</color>
 
