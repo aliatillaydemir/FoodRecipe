@@ -1,4 +1,57 @@
 # FoodRecipe
+
+Technologies and libraries used in the Project:
+
+MVVM Design Pattern
+
+Rest Api:
+Retrofit
+
+Shimmer:
+Facebook Shimmer
+
+Database for Offline Cache:
+- ROOM Database
+- Dependency Injection - Dagger-Hilt
+- DataStore Preferences
+
+Threading:
+Kotlin Coroutines
+LiveData
+Flow
+
+Android Architecture Component:
+Navigation Component
+DataStore Preferences
+
+Bindings:
+Data Binding
+View Bindings
+
+
+ViewModel
+
+NotifySetDataChanged:
+DiffUtil Class
+
+Parse HTTP Response:
+JSoup
+
+RecyclerView
+
+
+Dark and Light Theme:
+Night Mode
+
+Motion Layout
+
+
+ViewPager
+ViewPager2
+
+İmage:
+Coil
+
 ### Main Recipe Page
 
 <img width="256" src="https://github.com/aliatillaydemir/FoodRecipe/blob/master/food_recipe/Screenshot_1.png">  $~~~~~$
