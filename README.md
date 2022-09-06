@@ -107,4 +107,5 @@ Layout:
 ### Splash Screen
 <img width="256" src="https://github.com/aliatillaydemir/FoodRecipe/blob/master/food_recipe/splash_screen.png"> 
 
-
+<br/><br/>
+- [Visit my site to technical details about the project.](https://aliatillaydemir.github.io/DetailPages/RecipeAppDetails.html)
